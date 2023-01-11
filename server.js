@@ -57,6 +57,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Ok");
+});
+
 app.put("/upload", multer().array("ff", 1), async (req, res) => {
   console.log(req.body.email);
   const ele = await upload(req.files, req.body.email);
